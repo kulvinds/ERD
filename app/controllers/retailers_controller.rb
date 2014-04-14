@@ -11,7 +11,7 @@ class RetailersController < ApplicationController
   end
 
   def create
-  	@retailer = retailer.new(retailer_params)
+  	@retailer = Retailer.new(retailer_params)
   	if @retailer.save
   		flash[:success] = "Welcome to ERD"
   		redirect_to @retailer
@@ -22,6 +22,6 @@ class RetailersController < ApplicationController
 
   private
   	def retailer_params
-  		params.require(:retailer).permit(:name,:contact,:password,:password_confirmation)
+  		params.require(:retailer).permit(:name, :contact, :address, :password, :password_confirmation)
   	end
 end
