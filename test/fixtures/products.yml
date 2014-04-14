@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  manufacturer: MyString
+  model_number: MyString
+  price: 9.99
+  description: MyString
+  retailer_id: 1
+
+two:
+  manufacturer: MyString
+  model_number: MyString
+  price: 9.99
+  description: MyString
+  retailer_id: 1
