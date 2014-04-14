@@ -1,18 +1,13 @@
 Rails.application.routes.draw do
-
-  get 'retailers/new'
-
+  resources :retailers
   root 'pages#home'
-  match '/register', to: 'retailers#new', via: 'get'
-
+  match '/register', to: 'retailers#new', via: 'get'  
   
   get 'pages/home'
 
   get 'pages/help'
 
   resources :products
-
-  resources :retailers
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
