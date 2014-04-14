@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140414071152) do
+ActiveRecord::Schema.define(version: 20140414105356) do
 
   create_table "products", force: true do |t|
     t.string   "manufacturer"
@@ -29,6 +29,9 @@ ActiveRecord::Schema.define(version: 20140414071152) do
     t.string   "contact"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "password_digest"
   end
+
+  add_index "retailers", ["contact"], name: "index_retailers_on_contact", unique: true
 
 end

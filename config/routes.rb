@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+
+  get 'retailers/new'
+
+  root 'pages#home'
+  match '/register', to: 'retailers#new', via: 'get'
+
+  
   get 'pages/home'
 
   get 'pages/help'
