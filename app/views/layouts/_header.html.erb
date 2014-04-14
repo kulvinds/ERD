@@ -1,11 +1,16 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
 	<div class="navbar-inner">
 		<div class="container">
-			<%= link_to "ERD", '#', id: "logo" %>
+			<%= link_to "ERD", root_path, id: "logo" %>
 			<nav>
 				<ul class="nav pull-right">
-					<li><%= link_to "Sign In", '#' %></li>
-					<li><%= link_to "Register", register_path %></li>
+					<% if signed_in? %>
+						<li><%= link_to "Edit Details", '#' %></li>
+						<li><%= link_to "Sign Out", signout_path, method: "delete" %></li>
+					<% else %>						
+						<li><%= link_to "Register", register_path %></li>
+						<li><%= link_to "Sign In", signin_path %></li>
+					<% end %>
 				</ul>
 			</nav>
 		</div>

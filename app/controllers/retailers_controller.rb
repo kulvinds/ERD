@@ -13,6 +13,7 @@ class RetailersController < ApplicationController
   def create
   	@retailer = Retailer.new(retailer_params)
   	if @retailer.save
+      sign_in @retailer
   		flash[:success] = "Welcome to ERD"
   		redirect_to @retailer
   	else

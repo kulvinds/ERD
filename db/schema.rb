@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140414105356) do
+ActiveRecord::Schema.define(version: 20140414142755) do
 
   create_table "products", force: true do |t|
     t.string   "manufacturer"
@@ -30,8 +30,10 @@ ActiveRecord::Schema.define(version: 20140414105356) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"
+    t.string   "remember_token"
   end
 
   add_index "retailers", ["contact"], name: "index_retailers_on_contact", unique: true
+  add_index "retailers", ["remember_token"], name: "index_retailers_on_remember_token"
 
 end
