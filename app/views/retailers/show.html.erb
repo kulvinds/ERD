@@ -1,19 +1,41 @@
+<% provide(:title, @retailer.name) %>
 <p id="notice"><%= notice %></p>
+<h1><%= @retailer.name %></h1>
+<div class="row center">	
+	<div class='span6'>
+		<p>
+	  		<strong>Address:</strong>
+	  		<%= @retailer.address %>
+		</p>
+	</div>
+	<div class='span6'>
+		<p>
+			<strong>Contact:</strong>
+			<%= @retailer.contact %>
+		</p>
+	</div>
+</div>
+<% if signed_in? %>
+	<%= render 'shared/product_form' %>
+<% end %>
+<% if @retailer.products.any? %> 
+<h3 class="center top-buffer">Your Listed Products</h3>
+<table class="table table-striped table-condensed">
+	<thead>
+		<tr>
+			<th>Manufacturer</th>
+			<th>Model</th>
+			<th>Description</th>
+			<th>Price</th>
+			<% if !signed_in? %>
+				<th>Contact</th>
+			<% end %>
+		</tr>
+	</thead>
+	<tbody>
+		<%= render @products %>	
+	</tbody>
+</table>
+<%= will_paginate @products %>
+<% end %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @retailer.name %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @retailer.address %>
-</p>
-
-<p>
-  <strong>Contact:</strong>
-  <%= @retailer.contact %>
-</p>
-
-<%= link_to 'Edit', edit_retailer_path(@retailer) %> |
-<%= link_to 'Back', retailers_path %>

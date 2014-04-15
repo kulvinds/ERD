@@ -6,9 +6,9 @@ class SessionsController < ApplicationController
 		retailer = Retailer.find_by(contact: params[:session][:contact].downcase)
 		if retailer && retailer.authenticate(params[:session][:password])
 			sign_in retailer
-			redirect_to retailer
+			redirect_back_or retailer
 		else
-			flash[:error] = 'Invalid contact number/password combination'
+			flash.now[:error] = 'Invalid contact number/password combination'
 			render 'new'
 		end
 	end

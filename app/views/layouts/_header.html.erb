@@ -5,7 +5,7 @@
 			<nav>
 				<ul class="nav pull-right">
 					<% if signed_in? %>
-						<li><%= link_to "Edit Details", '#' %></li>
+						<li><%= link_to "Edit Details", edit_retailer_path, method: "get" %></li>
 						<li><%= link_to "Sign Out", signout_path, method: "delete" %></li>
 					<% else %>						
 						<li><%= link_to "Register", register_path %></li>

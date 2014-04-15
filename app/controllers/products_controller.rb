@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
-
+  before_action :signed_in_retailer, only: [:create, :update, :destroy]
+  before_action :correct_retailer, only: :destroy
   # GET /products
   # GET /products.json
   def index
@@ -24,16 +24,13 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
-
-    respond_to do |format|
-      if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render :show, status: :created, location: @product }
-      else
-        format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
+    @product = current_retailer.products.build(product_params)    
+    if @product.save
+      flash[:success] = "Product created..."
+      redirect_to current_retailer
+    else
+      flash[:error] = "Product creation Failed, Try again..."
+      redirect_to current_retailer
     end
   end
 
@@ -55,10 +52,7 @@ class ProductsController < ApplicationController
   # DELETE /products/1.json
   def destroy
     @product.destroy
-    respond_to do |format|
-      format.html { redirect_to products_url }
-      format.json { head :no_content }
-    end
+    redirect_to current_retailer
   end
 
   private
@@ -70,5 +64,10 @@ class ProductsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
       params.require(:product).permit(:manufacturer, :model_number, :price, :description, :retailer_id)
+    end
+
+    def correct_retailer
+      @product = current_retailer.products.find_by(id: params[:id])
+      redirect_to root_url if @product.nil?
     end
 end

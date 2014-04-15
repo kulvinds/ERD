@@ -1,4 +1,5 @@
 class Retailer < ActiveRecord::Base
+	has_many :products, dependent: :destroy
 	before_save { self.contact = contact.downcase }
 	before_create :create_remember_token
 

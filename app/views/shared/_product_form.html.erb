@@ -1,0 +1,26 @@
+<div class="row top-buffer">
+	<%= form_for(@product) do |f| %>
+	  	<%= render 'shared/error_messages', object: f.object %> 
+	  	<div class="span3">
+	  		<%= f.label :manufacturer %>
+		    <%= f.text_field :manufacturer %>
+	  	</div>
+	  	<div class="span2">
+	  		<%= f.label :model_number %>
+		    <%= f.text_field :model_number %>
+	  	</div>
+	  	<div class="span4">
+	  		<%= f.label :description %>
+		    <%= f.text_field :description %>
+	  	</div>
+	  	<div class="span2">
+	  		<%= f.label :price %>
+		    <%= f.text_field :price %>
+	  	</div>
+	  	<div class="span1">
+	  		<label>&nbsp</label>
+	  		<%= f.submit "Add", class: "btn btn-primary" %>
+	  	</div>	  	
+	<% end %>
+</div>
+

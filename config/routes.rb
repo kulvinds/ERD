@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :retailers
   resources :sessions, only: [:new, :create, :destroy]
-  root 'pages#home'
+  resources :products, only: [:create, :destroy]
+  root 'pages#home'  
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
   match '/register', to: 'retailers#new', via: 'get'  
