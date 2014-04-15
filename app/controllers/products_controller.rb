@@ -55,6 +55,13 @@ class ProductsController < ApplicationController
     redirect_to current_retailer
   end
 
+  def search
+    @products = Product.search do
+        keywords params[:query]
+    end.results
+    render "pages/search_results"    
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product

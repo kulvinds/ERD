@@ -1,8 +1,9 @@
-<div class="center hero-unit">
-	<div class="search-text-box">
-		<input id='search-box' type='text'>
+<div class="center hero-unit">	
+	<div class="search-text-box" style="margin-top:20px">
+		<%= text_field_tag 'search-term', nil, placeholder:'Enter search term...' %> 
+			<input type="button" onclick="searchDirectory()" value="Search!"/>
 	</div>
-	<div class="search-results-container">
-	</div>
+</div>
+<div id="search-results-container">
 </div>
 

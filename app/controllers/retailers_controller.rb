@@ -2,12 +2,9 @@ class RetailersController < ApplicationController
   before_action :signed_in_retailer, only: [:edit,:update]
   before_action :correct_retailer, only: [:edit, :update]
 
-  def new
-  end
-
   def show
   	@retailer = Retailer.find(params[:id])
-    @product = current_retailer.products.build
+    @product = @retailer.products.build
     @products = @retailer.products.paginate(page: params[:page])
   end
 

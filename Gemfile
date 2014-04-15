@@ -8,6 +8,7 @@ gem 'rails', '4.1.0'
 group :development do
 	gem 'sqlite3'
 	gem 'spring'
+	gem 'sunspot_solr'
 end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -32,6 +33,7 @@ gem 'bcrypt-ruby', '3.1.1.rc1', :require => 'bcrypt'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'sprockets', '2.11.0'
 gem 'will_paginate', '3.0.4'
+gem 'sunspot_rails'
 
 # Use unicorn as the app server
 # gem 'unicorn'
