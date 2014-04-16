@@ -19,6 +19,7 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
+    @product = Product.find_by(id: params[:id])
   end
 
   # POST /products
@@ -33,18 +34,17 @@ class ProductsController < ApplicationController
       redirect_to current_retailer
     end
   end
-
+ 
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
-    respond_to do |format|
-      if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-        format.json { render :show, status: :ok, location: @product }
-      else
-        format.html { render :edit }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
+    @product = Product.find(params[:id])        
+    if @product.update(product_params)
+      flash[:success] = "Product Updated..."
+      redirect_to current_retailer
+    else
+      flash[:error] = "Product update Failed, Try again..."
+      render 'edit'
     end
   end
 
