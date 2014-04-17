@@ -8,3 +8,7 @@
 		data: { query: $('#search-term').val() }
 		dataType: 'html'
 		success: (html) -> $("#search-results-container").html html
+
+@OpenMap = () ->
+	url = "http://maps.google.com/maps?q=" + $('#retailer-address').html();
+	window.open(url,'_blank').focus();

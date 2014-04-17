@@ -1,12 +1,15 @@
 <% provide(:title, @retailer.name) %>
 <p id="notice"><%= notice %></p>
-<h1><%= @retailer.name %></h1>
+<h1 id="retailer-name"><%= @retailer.name %></h1>
 <div class="row center">	
 	<div class='span6'>
 		<p>
 	  		<strong>Address:</strong>
-	  		<%= @retailer.address %>
+	  		<div id="retailer-address">
+	  			<%= @retailer.address %>
+	  		</div>
 		</p>
+		<input type="button" class="btn btn-small" onclick="OpenMap()" value="Show in Google Maps" />
 	</div>
 	<div class='span6'>
 		<p>

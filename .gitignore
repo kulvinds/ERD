@@ -26,3 +26,4 @@ doc/
 
 #Ignore Directory
 /solr/default/data
+/solr/pids
