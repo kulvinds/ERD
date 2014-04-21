@@ -7,7 +7,7 @@ class Retailer < ActiveRecord::Base
 	VALID_CONTACT_REGEX = /(^(\+91?|)\d{0,11}$)/
 	validates :contact, presence: true, format: { with: VALID_CONTACT_REGEX }, uniqueness: { case_sensitive: false }
 	has_secure_password
-	validates :password, length: { minimum: 8 }
+	validates :password, length: { minimum: 8 }, :if => :password
 
 	def Retailer.new_remember_token
 		SecureRandom.urlsafe_base64

@@ -28,6 +28,10 @@ class RetailersController < ApplicationController
   end
 
   def update
+    if retailer_params[:password].blank?
+      retailer_params.delete(:password)
+      retailer_params.delete(:password_confirmation)
+    end
     @retailer = Retailer.find(params[:id])
     if @retailer.update_attributes(retailer_params)
       flash[:success] = "Profile Updated..."
